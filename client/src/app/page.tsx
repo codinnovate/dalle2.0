@@ -1,12 +1,17 @@
 'use client'
-import { SearchParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
+import Card from "@/components/Card";
 import Image from "next/image";
 import { useState } from "react";
 
 
 
-const RenderCards = ({data, title}){
-  if(data?.length > 0) return data.map((post) => <Card key={post._id} {...post} />)
+const RenderCards = ({data, title}:{data:any, title:string}) =>{
+  if(data?.length > 0) {
+    return data.map((post:any) => <Card key={post._id} {...post} />)
+  } 
+  return (
+    <h2 className="mt-2 font-bold text-[#6449ff] text-xl uppercase">{title}</h2>
+  )
 }
 export default function Home() {
   const [loading, setLoading] = useState(false);
